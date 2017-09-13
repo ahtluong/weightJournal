@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-md-6">
+		<a routerLink="/" class="btn btn-link mb-2 pl-0"><i class="fa fa-arrow-circle-o-left"></i> Back To Dashboard</a>
+	</div>
+	<div class="col-md-6">
+		
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-header">Add Weight Entry</div>
+	<div class="card-block p-2">
+		<form novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+			<div class="form-group">
+				<label>Date</label>
+				<ng2-datepicker [options]="dateOptions" [(ngModel)]="entryDate" name="entryDate" required></ng2-datepicker>
+			</div>
+			<div class="form-group">
+				<label>Weight</label>
+				<input
+					type="number"
+					min="0" max="1000"
+					class="form-control"
+					[(ngModel)]="entryWeight"
+					name="entryWeight"
+					required
+				>
+			</div>
+			<div class="form-group">
+				<label>Unit</label>
+				<select class="form-control" [(ngModel)]="entry.unit" name="entry.unit" required>
+					<option value="lbs">lbs</option>
+					<option value="kg">kg</option>
+				</select>
+			</div>
+			<button type="submit" id="submitButton" class="btn btn-primary btn-block">Submit</button>
+		</form>
+	</div>
+</div>

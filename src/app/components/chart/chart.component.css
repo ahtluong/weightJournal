@@ -1,0 +1,13 @@
+.chart {
+	display: block;
+	width: 100%;
+}
+
+.btn-selected {
+	border: 3px solid #FF6600;
+}
+
+.btn-selected:hover {
+	background-color: #FF6600;
+}
+

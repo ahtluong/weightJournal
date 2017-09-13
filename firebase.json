@@ -1,0 +1,22 @@
+{
+	"-ypm54Yin0sQBx1WQXkLhROPLKNS2" : {
+		"firstName" : "John",
+		"lastName" : "Doe",
+		"weightEntries" : {
+			"-entry1": {
+				"date" : "31",
+				"month" : "8",
+				"year" : "2017",
+				"weight" : "170",
+				"unit" : "lbs"
+			},
+			"-entry2": {
+				"date" : "30",
+				"month" : "8",
+				"year" : "2017",
+				"weight" : "180",
+				"unit" : "lbs"
+			}
+		}
+	}
+}

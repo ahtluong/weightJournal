@@ -1,0 +1,54 @@
+<div class="row" style="min-height: 55px;">
+  <div class="col-md-4 text-center my-auto">
+    <a *ngIf="!weekly" class="btn btn-sm btn-outline-secondary" role="button" (click)="onWeeklyProgress()">Weekly Progress</a>
+    <a *ngIf="weekly"  class="btn btn-lg btn-selected" role="button">Weekly Progress</a>
+  </div>
+  <div class="col-md-4 text-center my-auto">
+    <a *ngIf="!overall" class="btn btn-sm btn-outline-secondary" role="button" (click)="onOverallProgress()">Overall Progress</a>
+    <a *ngIf="overall"  class="btn btn-lg btn-selected" role="button">Overall Progress</a>
+  </div>
+  <div class="col-md-4 text-center my-auto">
+    <a *ngIf="!monthly" class="btn btn-sm btn-outline-secondary" role="button" (click)="onMonthlyProgress()">Monthly Progress</a>
+    <a *ngIf="monthly"  class="btn btn-lg btn-selected" role="button">Monthly Progress</a>
+  </div>
+</div>
+<hr>
+<div *ngIf="weightEntries!=null; else noChart" class="row">
+	<div class="chart col-md-8 mx-auto">
+		<canvas *ngIf="weekly" baseChart height="200px"
+			[datasets]="weeklyChartData"
+  	  [labels]="weeklyChartLabels"
+  	  [options]="chartOptions"
+  	  [colors]="scatterChartColors"
+  	  [legend]="chartLegend"
+  	  [chartType]="line"
+      (chartHover)="chartHovered($event)"
+  	  (chartClick)="chartClicked($event)">
+  	</canvas>
+    <canvas *ngIf="overall" baseChart height="200px"
+      [datasets]="overallChartData"
+      [labels]="overallChartLabels"
+      [options]="chartOptions"
+      [colors]="lineChartColors"
+      [legend]="chartLegend"
+      [chartType]="line"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+    <canvas *ngIf="monthly" baseChart height="200px"
+      [datasets]="monthlyChartData"
+      [labels]="monthlyChartLabels"
+      [options]="chartOptions"
+      [colors]="lineChartColors"
+      [legend]="chartLegend"
+      [chartType]="line"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+	</div>
+</div>
+
+<ng-template #noChart>
+	<hr>
+	<h5>There is no data</h5>
+</ng-template>

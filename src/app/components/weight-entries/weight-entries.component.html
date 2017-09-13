@@ -1,0 +1,43 @@
+<table *ngIf="weightEntries?.length > 0;else noEntries" class="table table-stripped">
+	<thead class="thead-inverse">
+		<tr class="row">
+			<th class="col-md-5">Date</th>
+			<th class="col-md-5">Weight</th>
+			<th class="col-md-2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="row" *ngFor="let weightEntry of weightEntries">
+			<td class="col-md-5">{{format(weightEntry.date,weightEntry.month,weightEntry.year)}}</td>
+			<td class="col-md-5">{{weightEntry.weight}} {{weightEntry.unit}}</td>
+			<td class="col-md-2 text-right"><button routerLink="/edit-weight-entry" href="#" class="btn btn-secondary btn-sm" (click)="onEdit(weightEntry)"><i class="fa fa-ellipsis-h"></i></button> <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" (click)="onDelete(weightEntry,$event)"><i class="fa fa-remove"></i></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<p>Are you sure to remove this entry?</p>
+      	<hr>
+      	<p class="small">*To delete entry without seeing this message<br>Hold <i>Shift</i> + Click when deleting</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="deleteButton">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noEntries>
+	<hr>
+	<h5>There are no weight entries in the systems</h5>
+</ng-template>
